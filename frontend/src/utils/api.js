@@ -1,6 +1,10 @@
 import axios from 'axios'
 
-const api = axios.create({ baseURL: '/api', timeout: 30000 })
+const API_BASE = typeof window !== 'undefined' && window.location.hostname !== 'localhost'
+  ? 'https://smart-energy-backend-roun.onrender.com/api'
+  : '/api'
+
+const api = axios.create({ baseURL: API_BASE, timeout: 30000 })
 
 api.interceptors.response.use(
   res => res,
